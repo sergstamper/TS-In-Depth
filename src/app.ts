@@ -70,6 +70,17 @@ function createCustomerID(name: string, id: number): string {
     return `${id}/${name}`;
 }
 
+function createCustomer(name: string, age?: number, city?: string): void {
+    console.log(`Customer name: ${name}`);
+
+    if (age) {
+        console.log(`Customer age ${age}`);
+    }
+
+    if (city) {
+        console.log(`Customer city ${city}`)
+    }
+}
 
 //console.log(getAllBooks());
 //logFirstAvailable(getAllBooks());
@@ -79,12 +90,16 @@ function createCustomerID(name: string, id: number): string {
 //calcTotalPages();
 
 // Task 03.01
-const myID: string = createCustomerID('Ann', 10);
-console.log(myID);
+// const myID: string = createCustomerID('Ann', 10);
+// console.log(myID);
 
 //let idGenerator: (name: string, id: number) => string;
-let idGenerator: typeof createCustomerID;
-idGenerator = (name: string, id: number) => `${id}/${name}`;
-idGenerator = createCustomerID;
+// let idGenerator: typeof createCustomerID;
+// idGenerator = (name: string, id: number) => `${id}/${name}`;
+// idGenerator = createCustomerID;
 
-console.log(idGenerator('Boris', 20));
+// console.log(idGenerator('Boris', 20));
+
+createCustomer('Anna');
+createCustomer('Anna', 30);
+createCustomer('Anna', 30, 'Kyiv');
