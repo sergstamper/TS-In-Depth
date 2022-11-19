@@ -66,10 +66,25 @@ function calcTotalPages(): void {
     console.log(r);
 }
 
+function createCustomerID(name: string, id: number): string {
+    return `${id}/${name}`;
+}
+
 
 //console.log(getAllBooks());
 //logFirstAvailable(getAllBooks());
 //console.log(getBookTitlesByCategory(1));
 //logBookTitles(getBookTitlesByCategory(Category.JavaScript));
 //console.log(getBookAuthorByIndex(2));
-calcTotalPages();
+//calcTotalPages();
+
+// Task 03.01
+const myID: string = createCustomerID('Ann', 10);
+console.log(myID);
+
+//let idGenerator: (name: string, id: number) => string;
+let idGenerator: typeof createCustomerID;
+idGenerator = (name: string, id: number) => `${id}/${name}`;
+idGenerator = createCustomerID;
+
+console.log(idGenerator('Boris', 20));
