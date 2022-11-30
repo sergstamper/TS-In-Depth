@@ -11,13 +11,24 @@ function showHello(divName: string, name: string) {
 
 enum Category { JavaScript, CSS, HTML, TypeScript, Angular };
 
-type Book = {
+// type Book = {
+//     id: number;
+//     title: string;
+//     author: string;
+//     available: boolean;
+//     category: Category;
+// };
+
+interface Book {
     id: number;
     title: string;
     author: string;
     available: boolean;
     category: Category;
-};
+    pages?: number;
+    // markDamaged?: (reason: string) => void;
+    markDamaged?(reason: string): void;
+}
 
 function getAllBooks(): readonly Book[] {
     const books = <const>[
@@ -84,7 +95,7 @@ function createCustomer(name: string, age?: number, city?: string): void {
     }
 }
 
-function getBookById(id: number): Book {
+function getBookById(id: Book['id']): Book | undefined {
     const books = getAllBooks();
     return books.find(book => book.id === id);
 }
@@ -137,6 +148,10 @@ function bookTitleTransform(title: any): string {
     return [...title].reverse().join('');
 }
 
+function printBook(book: Book): void {
+    console.log(`${book.title} by ${book.author}`);
+}
+
 
 //console.log(getAllBooks());
 //logFirstAvailable(getAllBooks());
@@ -179,3 +194,21 @@ function bookTitleTransform(title: any): string {
 
 // console.log(bookTitleTransform('Learn TypeScript'));
 // console.log(bookTitleTransform(9876543));
+
+const myBook: Book = {
+    id: 5,
+    title: 'Colors, Backgrounds and Gradients',
+    author: 'Eric A. Meyer',
+    available: true,
+    category: Category.CSS,
+    // year: 2015,
+    // copies: 3,
+    pages: 200,
+    // markDamaged: (reason: string) => console.log(`Damaged: ${reason}`)
+    markDamaged(reason: string) {
+        console.log(`Damaged: ${reason}`);
+    }
+};
+
+printBook(myBook);
+myBook.markDamaged('missing back cover');
