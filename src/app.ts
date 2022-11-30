@@ -27,7 +27,12 @@ interface Book {
     category: Category;
     pages?: number;
     // markDamaged?: (reason: string) => void;
-    markDamaged?(reason: string): void;
+    // markDamaged?(reason: string): void;
+    markDamaged?: DamageLogger;
+}
+
+interface DamageLogger {
+    (reason: string): void;
 }
 
 function getAllBooks(): readonly Book[] {
@@ -195,20 +200,23 @@ function printBook(book: Book): void {
 // console.log(bookTitleTransform('Learn TypeScript'));
 // console.log(bookTitleTransform(9876543));
 
-const myBook: Book = {
-    id: 5,
-    title: 'Colors, Backgrounds and Gradients',
-    author: 'Eric A. Meyer',
-    available: true,
-    category: Category.CSS,
-    // year: 2015,
-    // copies: 3,
-    pages: 200,
-    // markDamaged: (reason: string) => console.log(`Damaged: ${reason}`)
-    markDamaged(reason: string) {
-        console.log(`Damaged: ${reason}`);
-    }
-};
+// const myBook: Book = {
+//     id: 5,
+//     title: 'Colors, Backgrounds and Gradients',
+//     author: 'Eric A. Meyer',
+//     available: true,
+//     category: Category.CSS,
+//     // year: 2015,
+//     // copies: 3,
+//     pages: 200,
+//     // markDamaged: (reason: string) => console.log(`Damaged: ${reason}`)
+//     markDamaged(reason: string) {
+//         console.log(`Damaged: ${reason}`);
+//     }
+// };
 
-printBook(myBook);
-myBook.markDamaged('missing back cover');
+// printBook(myBook);
+// myBook.markDamaged('missing back cover');
+
+const logDamage: DamageLogger = (reason: string) => console.log(`Damaged: ${reason}`);
+logDamage('missng some pages');
