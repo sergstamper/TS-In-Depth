@@ -179,7 +179,7 @@ function getProperty(book: Book, prop: BookProperties): any {
     return typeof value === 'function' ? value.name : value;
 }
 
-class ReferenceItem {
+abstract class ReferenceItem {
     // title: string;
     // year: number;
     // constructor(newTitle: string, newYear: number) {
@@ -205,7 +205,7 @@ class ReferenceItem {
     constructor(
         id: number,
         public title: string,
-        private year: number
+        protected year: number
     ) {
         console.log('Creating a new ReferenceItem...');
         this.#id = id;
@@ -219,6 +219,28 @@ class ReferenceItem {
 
     getID(): number {
         return this.#id;
+    }
+
+    abstract printCitation(): void;
+}
+
+class Encyclopedia extends ReferenceItem {
+    constructor(
+        id: number,
+        title: string,
+        year: number,
+        public edition: number
+    ) {
+        super(id, title, year);
+    }
+
+    override printItem(): void {
+        super.printItem();
+        console.log(`Edition: ${this.edition} (${this.year})`)
+    }
+
+    printCitation(): void {
+        console.log(`${this.title} ${this.year}`)
     }
 }
 
@@ -319,3 +341,10 @@ class ReferenceItem {
 // ref.publisher = 'abc group';
 // console.log(ref.publisher);
 // console.log(ref.getID());
+
+const refBook: Encyclopedia = new Encyclopedia(1, 'Learn TypeScript', 2022, 2);
+// refBook.printItem();
+console.log(refBook);
+// console.log(refBook.getID());
+refBook.printCitation();
+
