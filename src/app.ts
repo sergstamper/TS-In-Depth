@@ -20,6 +20,8 @@ enum Category { JavaScript, CSS, HTML, TypeScript, Angular };
 // };
 
 type BookProperties = keyof Book | 'isbn';
+type PersonBook = Person & Book;
+type BookOrUndefined = Book | undefined;
 
 interface Book {
     id: number;
@@ -49,6 +51,11 @@ interface Author extends Person {
 interface Librarian extends Person {
     department: string;
     assistCustomer: (custName: string, bookTitle: string) => void;
+}
+
+interface TOptions {
+    duration?: number;
+    speed?: number;
 }
 
 function getAllBooks(): readonly Book[] {
@@ -116,7 +123,7 @@ function createCustomer(name: string, age?: number, city?: string): void {
     }
 }
 
-function getBookById(id: Book['id']): Book | undefined {
+function getBookById(id: Book['id']): BookOrUndefined {
     const books = getAllBooks();
     return books.find(book => book.id === id);
 }
@@ -177,6 +184,12 @@ function getProperty(book: Book, prop: BookProperties): any {
     const value = book[prop];
 
     return typeof value === 'function' ? value.name : value;
+}
+
+function setDefaultConfig(options: TOptions) {
+    options.duration ??= 100;
+    options.speed ??= 60;
+    return options;
 }
 
 abstract class ReferenceItem {
@@ -364,7 +377,24 @@ class UniversityLibrarian implements Librarian/* , A */ {
 // console.log(refBook.getID());
 // refBook.printCitation();
 
-const favoriteLibrarian: Librarian = new UniversityLibrarian();
-favoriteLibrarian.name = 'Anna';
-favoriteLibrarian.assistCustomer('Boris', 'Learn TypeScript');
+// const favoriteLibrarian: Librarian = new UniversityLibrarian();
+// favoriteLibrarian.name = 'Anna';
+// favoriteLibrarian.assistCustomer('Boris', 'Learn TypeScript');
 // favoriteLibrarian.a = 2;
+
+// const personBook: PersonBook = {
+//     name: 'Anna',
+//     author: 'Anna',
+//     available: false,
+//     category: Category.Angular,
+//     email: 'anna@example.com',
+//     id: 1,
+//     title: 'Unknown'
+// }
+// console.log(personBook);
+
+// const options: TOptions = { duration: 20 };
+// const options2 = setDefaultConfig(options);
+// console.log(options);
+// console.log(options2);
+// console.log(Object.is(options, options2));
