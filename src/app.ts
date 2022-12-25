@@ -244,6 +244,22 @@ class Encyclopedia extends ReferenceItem {
     }
 }
 
+// interface A {
+//     a: number;
+// }
+
+class UniversityLibrarian implements Librarian/* , A */ {
+    name: string;
+    email: string;
+    department: string;
+
+    a: number = 1;
+
+    assistCustomer(custName: string, bookTitle: string): void {
+        console.log(`${this.name} is assisting ${custName} with book ${bookTitle}`);
+    }
+}
+
 //console.log(getAllBooks());
 //logFirstAvailable(getAllBooks());
 //console.log(getBookTitlesByCategory(1));
@@ -342,9 +358,13 @@ class Encyclopedia extends ReferenceItem {
 // console.log(ref.publisher);
 // console.log(ref.getID());
 
-const refBook: Encyclopedia = new Encyclopedia(1, 'Learn TypeScript', 2022, 2);
+// const refBook: Encyclopedia = new Encyclopedia(1, 'Learn TypeScript', 2022, 2);
 // refBook.printItem();
-console.log(refBook);
+// console.log(refBook);
 // console.log(refBook.getID());
-refBook.printCitation();
+// refBook.printCitation();
 
+const favoriteLibrarian: Librarian = new UniversityLibrarian();
+favoriteLibrarian.name = 'Anna';
+favoriteLibrarian.assistCustomer('Boris', 'Learn TypeScript');
+// favoriteLibrarian.a = 2;
