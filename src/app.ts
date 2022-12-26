@@ -1,7 +1,8 @@
-import { ReferenceItem, UL, RefBook } from "./classes";
+import { ReferenceItem, UL, RefBook/* , Library */ } from "./classes";
 import { Category } from "./enums";
 import { printRefBook, calcTotalPages, getAllBooks, getBookAuthorByIndex, getBookTitlesByCategory, logBookTitles, logFirstAvailable, setDefaultConfig } from "./functions";
 import { Librarian, Logger, TOptions } from "./interfaces";
+import { Library } from './classes/library';
 
 showHello('greeting', 'TypeScript');
 
@@ -160,7 +161,7 @@ function showHello(divName: string, name: string) {
 // printRefBook(favoriteLibrarian);
 
 // >>> Task 06.05 <<<
-const flag = true;
+// const flag = true;
 
 // if (flag) {
 //     import('./classes')
@@ -175,12 +176,22 @@ const flag = true;
 //         .finally(() => console.log('Complete!'));
 // }
 
-if (flag) {
-    const o = await import('./classes');
+// if (flag) {
+//     const o = await import('./classes');
 
-    const reader = new o.Reader();
-    reader.name = 'Anna';
-    reader.take(getAllBooks()[0]);
+//     const reader = new o.Reader();
+//     reader.name = 'Anna';
+//     reader.take(getAllBooks()[0]);
 
-    console.log(reader);
-}
+//     console.log(reader);
+// }
+
+// >>> Task 06.06 <<<
+// let library: Library = new Library;
+let library: Library = {
+    id: 1,
+    address: '',
+    name: 'Anna'
+};
+
+console.log(library);
