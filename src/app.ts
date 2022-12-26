@@ -1,7 +1,7 @@
-import { ReferenceItem } from "./classes";
+import { ReferenceItem, UL, RefBook } from "./classes";
 import { Category } from "./enums";
-import { calcTotalPages, getAllBooks, getBookAuthorByIndex, getBookTitlesByCategory, logBookTitles, logFirstAvailable, setDefaultConfig } from "./functions";
-import { Logger, TOptions } from "./interfaces";
+import { printRefBook, calcTotalPages, getAllBooks, getBookAuthorByIndex, getBookTitlesByCategory, logBookTitles, logFirstAvailable, setDefaultConfig } from "./functions";
+import { Librarian, Logger, TOptions } from "./interfaces";
 
 showHello('greeting', 'TypeScript');
 
@@ -12,25 +12,7 @@ function showHello(divName: string, name: string) {
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++
 
-class Encyclopedia extends ReferenceItem {
-    constructor(
-        id: number,
-        title: string,
-        year: number,
-        public edition: number
-    ) {
-        super(id, title, year);
-    }
 
-    override printItem(): void {
-        super.printItem();
-        console.log(`Edition: ${this.edition} (${this.year})`)
-    }
-
-    printCitation(): void {
-        console.log(`${this.title} ${this.year}`)
-    }
-}
 
 // >>> Task 2.01 <<<
 // console.log(getAllBooks());
@@ -139,13 +121,16 @@ class Encyclopedia extends ReferenceItem {
 // console.log(ref.publisher);
 // console.log(ref.getID());
 
+// >>> Task 05.02, 05.03 <<<
 // const refBook: Encyclopedia = new Encyclopedia(1, 'Learn TypeScript', 2022, 2);
+// const refBook: RefBook = new RefBook(1, 'Learn TypeScript', 2022, 2);
 // refBook.printItem();
 // console.log(refBook);
 // console.log(refBook.getID());
 // refBook.printCitation();
 
-// const favoriteLibrarian: Librarian = new UniversityLibrarian();
+// >>> Task 05.04 <<<
+// const favoriteLibrarian: Librarian = new UL.UniversityLibrarian();
 // favoriteLibrarian.name = 'Anna';
 // favoriteLibrarian.assistCustomer('Boris', 'Learn TypeScript');
 // favoriteLibrarian.a = 2;
@@ -166,3 +151,10 @@ class Encyclopedia extends ReferenceItem {
 // console.log(options);
 // console.log(options2);
 // console.log(Object.is(options, options2));
+
+// >>> Task 06.03, 06.04 <<<
+const refBook: RefBook = new RefBook(1, 'Learn TypeScript', 2022, 2);
+printRefBook(refBook);
+
+const favoriteLibrarian: Librarian = new UL.UniversityLibrarian();
+printRefBook(favoriteLibrarian);
