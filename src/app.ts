@@ -153,8 +153,34 @@ function showHello(divName: string, name: string) {
 // console.log(Object.is(options, options2));
 
 // >>> Task 06.03, 06.04 <<<
-const refBook: RefBook = new RefBook(1, 'Learn TypeScript', 2022, 2);
-printRefBook(refBook);
+// const refBook: RefBook = new RefBook(1, 'Learn TypeScript', 2022, 2);
+// printRefBook(refBook);
 
-const favoriteLibrarian: Librarian = new UL.UniversityLibrarian();
-printRefBook(favoriteLibrarian);
+// const favoriteLibrarian: Librarian = new UL.UniversityLibrarian();
+// printRefBook(favoriteLibrarian);
+
+// >>> Task 06.05 <<<
+const flag = true;
+
+// if (flag) {
+//     import('./classes')
+//         .then(o => {
+//             const reader = new o.Reader();
+//             reader.name = 'Anna';
+//             reader.take(getAllBooks()[0]);
+
+//             console.log(reader);
+//         })
+//         .catch(err => console.log(err))
+//         .finally(() => console.log('Complete!'));
+// }
+
+if (flag) {
+    const o = await import('./classes');
+
+    const reader = new o.Reader();
+    reader.name = 'Anna';
+    reader.take(getAllBooks()[0]);
+
+    console.log(reader);
+}
