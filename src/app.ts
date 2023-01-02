@@ -1,7 +1,7 @@
-import { ReferenceItem, UL, RefBook/* , Library */ } from "./classes";
+import { ReferenceItem, Shelf, UL, RefBook/* , Library */ } from "./classes";
 import { Category } from "./enums";
-import { printRefBook, calcTotalPages, getAllBooks, getBookAuthorByIndex, getBookTitlesByCategory, logBookTitles, logFirstAvailable, setDefaultConfig } from "./functions";
-import { Librarian, Logger, TOptions } from "./interfaces";
+import { purge, printRefBook, calcTotalPages, getAllBooks, getBookAuthorByIndex, getBookTitlesByCategory, logBookTitles, logFirstAvailable, setDefaultConfig, getObjectProperty } from "./functions";
+import { Book, Librarian, Logger, TOptions, Magazine } from "./interfaces";
 import { Library } from './classes/library';
 
 showHello('greeting', 'TypeScript');
@@ -188,10 +188,49 @@ function showHello(divName: string, name: string) {
 
 // >>> Task 06.06 <<<
 // let library: Library = new Library;
-let library: Library = {
-    id: 1,
-    address: '',
-    name: 'Anna'
-};
+// let library: Library = {
+//     id: 1,
+//     address: '',
+//     name: 'Anna'
+// };
 
-console.log(library);
+// console.log(library);
+
+// >>> Task 07.01 <<<
+const inventory: Book[] = [
+    { id: 10, title: 'The C Programming Language', author: '???', available: true, category: Category.Software },
+    { id: 11, title: 'Code Complete', author: 'Steve McConnel', available: true, category: Category.Software },
+    { id: 12, title: '8-bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.Software },
+    { id: 13, title: 'Cool autoexec.bat Scripts', author: 'C. D.', available: true, category: Category.Software }
+];
+
+// const result: string[] = purge(['123', '345', '456']);
+// const result = purge<string>(['123', '345', '456']);
+// const result: number[] = purge([123, 345, 456]);
+// const result = purge(['123', '345', '456']);
+// const result1 = purge(inventory);
+// console.log(result1);
+// const result2: number[] = purge([123, 345, 456]);
+// console.log(result2);
+
+// >>> Task 07.02, 07.03 <<<
+// const bookShelf: Shelf<Book> = new Shelf<Book>();
+// const bookShelf = new Shelf<Book>();
+// inventory.forEach(book => bookShelf.add(book));
+// console.log(bookShelf.getFirst().title);
+
+const magazines: Magazine[] = [
+    { title: 'Programming Language Monthly', publisher: 'Code Mags' },
+    { title: 'Literary Fiction Quarterly', publisher: 'College Press' },
+    { title: 'Five Points', publisher: 'GSU' }
+]
+
+// const magazineShelf = new Shelf<Magazine>();
+// magazines.forEach(magazine => magazineShelf.add(magazine));
+// // console.log(magazineShelf.getFirst().title);
+
+// magazineShelf.printTitles();
+// console.log(magazineShelf.find('Five Points'));
+
+console.log(getObjectProperty(magazines[0], 'publisher'));
+console.log(getObjectProperty(inventory[1], 'author'));
