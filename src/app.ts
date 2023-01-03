@@ -1,8 +1,9 @@
 import { ReferenceItem, Shelf, UL, RefBook/* , Library */ } from "./classes";
 import { Category } from "./enums";
-import { purge, printRefBook, calcTotalPages, getAllBooks, getBookAuthorByIndex, getBookTitlesByCategory, logBookTitles, logFirstAvailable, setDefaultConfig, getObjectProperty } from "./functions";
+import { purge, printRefBook, calcTotalPages, getAllBooks, getBookAuthorByIndex, getBookTitlesByCategory, logBookTitles, logFirstAvailable, setDefaultConfig, getObjectProperty, createCustomer } from "./functions";
 import { Book, Librarian, Logger, TOptions, Magazine } from "./interfaces";
 import { Library } from './classes/library';
+import { BookRequiredFields, CreateCustomerFunctionType, UpdatedBook } from "./types";
 
 showHello('greeting', 'TypeScript');
 
@@ -219,11 +220,11 @@ const inventory: Book[] = [
 // inventory.forEach(book => bookShelf.add(book));
 // console.log(bookShelf.getFirst().title);
 
-const magazines: Magazine[] = [
-    { title: 'Programming Language Monthly', publisher: 'Code Mags' },
-    { title: 'Literary Fiction Quarterly', publisher: 'College Press' },
-    { title: 'Five Points', publisher: 'GSU' }
-]
+// const magazines: Magazine[] = [
+//     { title: 'Programming Language Monthly', publisher: 'Code Mags' },
+//     { title: 'Literary Fiction Quarterly', publisher: 'College Press' },
+//     { title: 'Five Points', publisher: 'GSU' }
+// ]
 
 // const magazineShelf = new Shelf<Magazine>();
 // magazines.forEach(magazine => magazineShelf.add(magazine));
@@ -232,5 +233,25 @@ const magazines: Magazine[] = [
 // magazineShelf.printTitles();
 // console.log(magazineShelf.find('Five Points'));
 
-console.log(getObjectProperty(magazines[0], 'publisher'));
-console.log(getObjectProperty(inventory[1], 'author'));
+// console.log(getObjectProperty(magazines[0], 'publisher'));
+// console.log(getObjectProperty(inventory[1], 'author'));
+
+// >>> Task 07.04 <<<
+// const bookRequiredFields: BookRequiredFields = {
+//     author: 'Anna',
+//     available: false,
+//     category: Category.Angular,
+//     id: 1,
+//     markDamaged: null,
+//     pages: 200,
+//     title: 'Learn Angular'
+// };
+
+// const updatedBook: UpdatedBook = {
+//     id: 1,
+//     pages: 300
+// };
+
+let params: Parameters<CreateCustomerFunctionType>;
+params = ['Anna', 30, 'Kyiv'];
+createCustomer(...params);
