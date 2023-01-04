@@ -252,6 +252,8 @@ const inventory: Book[] = [
 //     pages: 300
 // };
 
-let params: Parameters<CreateCustomerFunctionType>;
-params = ['Anna', 30, 'Kyiv'];
-createCustomer(...params);
+// let params: Parameters<CreateCustomerFunctionType>;
+// params = ['Anna', 30, 'Kyiv'];
+// createCustomer(...params);
+
+// >>> Task 07.05 <<<
