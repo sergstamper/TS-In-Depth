@@ -4,6 +4,7 @@ import { purge, printRefBook, calcTotalPages, getAllBooks, getBookAuthorByIndex,
 import { Book, Librarian, Logger, TOptions, Magazine } from "./interfaces";
 import { Library } from './classes/library';
 import { BookRequiredFields, CreateCustomerFunctionType, UpdatedBook } from "./types";
+import Encyclopedia from "./classes/encyclopedia";
 
 showHello('greeting', 'TypeScript');
 
@@ -198,12 +199,12 @@ function showHello(divName: string, name: string) {
 // console.log(library);
 
 // >>> Task 07.01 <<<
-const inventory: Book[] = [
-    { id: 10, title: 'The C Programming Language', author: '???', available: true, category: Category.Software },
-    { id: 11, title: 'Code Complete', author: 'Steve McConnel', available: true, category: Category.Software },
-    { id: 12, title: '8-bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.Software },
-    { id: 13, title: 'Cool autoexec.bat Scripts', author: 'C. D.', available: true, category: Category.Software }
-];
+// const inventory: Book[] = [
+//     { id: 10, title: 'The C Programming Language', author: '???', available: true, category: Category.Software },
+//     { id: 11, title: 'Code Complete', author: 'Steve McConnel', available: true, category: Category.Software },
+//     { id: 12, title: '8-bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.Software },
+//     { id: 13, title: 'Cool autoexec.bat Scripts', author: 'C. D.', available: true, category: Category.Software }
+// ];
 
 // const result: string[] = purge(['123', '345', '456']);
 // const result = purge<string>(['123', '345', '456']);
@@ -256,4 +257,32 @@ const inventory: Book[] = [
 // params = ['Anna', 30, 'Kyiv'];
 // createCustomer(...params);
 
-// >>> Task 07.05 <<<
+// >>> Task 08.01 <<<
+// const favoriteLibrarian1 = new UL.UniversityLibrarian();
+// const favoriteLibrarian2 = new UL.UniversityLibrarian();
+// favoriteLibrarian1['a'] = 1; // Add on instance
+// UL.UniversityLibrarian['a'] = 2; // Can`t add on class because sealed
+// UL.UniversityLibrarian.prototype['a'] = 3; // Can`t add on prototype because sealed
+
+// >>> Task 08.02 <<<
+// const fLibrarian = new UL.UniversityLibrarian();
+// console.log(fLibrarian);
+// fLibrarian.printLibrarian();
+// fLibrarian.name = 'Anna';
+// fLibrarian['printLibrarian']();
+
+// >>> Task 08.03 <<<
+// const favoriteLibrarian = new UL.UniversityLibrarian();
+// console.log(favoriteLibrarian);
+// favoriteLibrarian.assitFaculty = null;
+// favoriteLibrarian.teachCommunity = null;
+
+// >>> Task 08.04 <<<
+// const refBook: RefBook = new RefBook(1, 'Learn TypeScript', 2022, 2);
+// refBook.printItem();
+
+// >>> Task 08.05 <<<
+const favoriteLibrarian = new UL.UniversityLibrarian();
+console.log(favoriteLibrarian);
+favoriteLibrarian.name = 'Anna';
+favoriteLibrarian.assistCustomer('Boris', 'Learn TypeScript');
