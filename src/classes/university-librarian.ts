@@ -1,5 +1,5 @@
 import * as Interfaces from './../interfaces';
-import { logger, logMethod, logParameter, sealed, writable } from './decorators';
+import { format, logger, logMethod, logParameter, sealed, writable } from './decorators';
 
 // interface A {
 //     a: number;
@@ -8,6 +8,7 @@ import { logger, logMethod, logParameter, sealed, writable } from './decorators'
 // @sealed('UniversityLibrarian') // wth curles because fabric function
 // @logger // wo curles because decorator
 class UniversityLibrarian implements Interfaces.Librarian/* , A */ {
+    @format()
     name: string;
     email: string;
     department: string;
